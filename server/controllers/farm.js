@@ -6,8 +6,8 @@ var Farm = mongoose.model('Farm');
 module.exports = {
 
     submit_farm: function(req, res) {
-        console.log('the info here is: ', req.body.info.coordinates)
-        let newFarm = new Farm({"name": req.body.info.name, "coords": req.body.info.coordinates})
+        console.log('the info here is: ', req.body)
+        let newFarm = new Farm({"name": req.body.name, "coords": req.body.coords, "description": req.body.description})
         newFarm.save(function(err){
             if(err){console.log('unable to add new farm', err)}
             else{res.json(true)};
@@ -19,11 +19,17 @@ module.exports = {
             if(err){
                 console.log("there was an error getting all farms", err)
             }else{
-                console.log('the farms are', farms);
                 return res.json(farms);
             }
         })
-    }
+    },
+
+    delete_farm: function(req, res){
+        Farm.remove({_id: req.body.id}, function(err, result){
+            if(err){console.log("there was an error")}
+            else{res.json(true);}
+        })
+    },
     
 }
 

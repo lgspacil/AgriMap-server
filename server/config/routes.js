@@ -10,7 +10,6 @@ module.exports = function (app){
     })
 
     app.get('/get_all_farms', function(req, res){
-        console.log('made it here!!!!')
         farm.get_all_farms(req, res);
     })
 
@@ -20,6 +19,10 @@ module.exports = function (app){
 
     app.post('/auto_login', function(req, res){
         users.auto_login(req, res);
+    })
+
+    app.post('/delete_farm', function(req, res){
+        farm.delete_farm(req, res);
     })
 
     // ---------------------------------------
