@@ -6,7 +6,6 @@ var Farm = mongoose.model('Farm');
 module.exports = {
 
     submit_farm: function(req, res) {
-        console.log('the info here is: ', req.body)
         let newFarm = new Farm({"name": req.body.name, "coords": req.body.coords, "description": req.body.description})
         newFarm.save(function(err){
             if(err){console.log('unable to add new farm', err)}
