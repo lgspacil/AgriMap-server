@@ -8,7 +8,6 @@ var User = mongoose.model('User');
 module.exports = {
 
     login: function(req, res){
-        console.log('You made it here!', req.body);
         User.findOne({email: req.body.email}, function(err, result){
             if(result === null){
                 var user = new User({ "email":req.body.email, "password":req.body.password, "name":req.body.name})
@@ -28,7 +27,6 @@ module.exports = {
     },
 
     auto_login: function(req, res){
-        console.log('the body is: ', req.body);
         User.findOne({email: req.body.email}, function(err, result){
             if(err){
                 console.log('there was an error')
