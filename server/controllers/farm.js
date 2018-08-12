@@ -18,7 +18,9 @@ module.exports = {
             if(err){
                 console.log("there was an error getting all farms", err)
             }else{
-                return res.json(farms);
+                var newFarm = farms.reverse();
+                // console.log('ALL THE FARMS: ', farms.reverse())
+                return res.json(newFarm);
             }
         })
     },
